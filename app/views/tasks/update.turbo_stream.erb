@@ -1,0 +1,5 @@
+<% if @task.archived? %>
+  <%= turbo_stream.prepend "archived_tasks", partial: "tasks/task", locals: { task: @task } %>
+<% else %>
+  <%= turbo_stream.prepend "tasks", partial: "tasks/task", locals: { task: @task } %>
+<% end %>
