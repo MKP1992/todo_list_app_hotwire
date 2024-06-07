@@ -6,11 +6,11 @@
 <div class="mt-4">
   <%= render "form", task: Task.new %>
 </div>
-<% if @tasks.any? %>
-  <h2 class="text-2xl font-bold mt-6">Tasks</h2>
-  <div id="tasks" class="space-y-4">
+<h2 class="text-2xl font-bold mt-6">Tasks</h2>
+<div id="tasks" class="space-y-4">
+  <% if @tasks.any? %>
     <%= render @tasks %>
-  </div>
-<% else %>
-  <p class="text-gray-500 mt-6">No active tasks available.</p>
-<% end %>
+  <% else %>
+    <p id="task_not" class="text-gray-500 mt-6">No active tasks available.</p>
+  <% end %>
+</div>
