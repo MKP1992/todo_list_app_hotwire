@@ -1,24 +1,50 @@
-# README
+# Todo List App with Hotwire and Tailwind CSS
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a simple Todo List application built with Ruby on Rails, Hotwire, and Tailwind CSS. It allows you to create, view, and archive tasks.
 
-Things you may want to cover:
+## Features
 
-* Ruby version
+- Create tasks
+- Realtime updates with Hotwire on Archive tasks
+- Styled with Tailwind CSS
 
-* System dependencies
+## Prerequisites
 
-* Configuration
+- Ruby 3.0.0 or later
+- Rails 7.0 or later
 
-* Database creation
+## Getting Started
 
-* Database initialization
+Follow these instructions to get a copy of the project up and running on your local machine.
 
-* How to run the test suite
+### Installation
 
-* Services (job queues, cache servers, search engines, etc.)
+1. Clone the repository:
 
-* Deployment instructions
+    ```bash
+    git clone https://github.com/yourusername/todo_list_app_hotwire.git
+    cd todo_list_app_hotwire
+    ```
 
-* ...
+2. Setup the app:
+
+    ```bash
+    bin/rails db:setup
+    ```
+
+### Running the Application
+
+1. Start the Rails server:
+
+    ```bash
+    bin/dev
+    ```
+
+2. Open your browser and navigate to `http://localhost:3000`
+
+### Running Tests
+
+To run the test suite, use:
+
+```bash
+rspec
