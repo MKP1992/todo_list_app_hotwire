@@ -31,7 +31,7 @@ class TasksController < ApplicationController
     else
       respond_to do |format|
         format.html { render :index }
-        format.turbo_stream { render turbo_stream: turbo_stream.replace("#{dom_id(@task)}_form", partial: 'tasks/form', locals: { task: @task }) }
+        format.turbo_stream { render turbo_stream: turbo_stream.replace("task_#{@task.id}", partial: 'tasks/form', locals: { task: @task }) }
       end
     end
   end
