@@ -12,27 +12,28 @@ class TasksController < ApplicationController
     if @task.save
       respond_to do |format|
         format.html { redirect_to tasks_path, notice: "Task was successfully created" }
-        format.turbo_stream
+        format.turbo_stream { flash.now[:notice] = 'Task was successfully created.' }
       end
     else
-      render :index
+      respond_to do |format|
+        format.html { render :index }
+        format.turbo_stream { render turbo_stream: turbo_stream.replace('task_form', partial: 'tasks/form', locals: { task: @task }) }
+      end
     end
   end
 
   def update
     if @task.update(task_params)
       respond_to do |format|
-        format.html { redirect_to tasks_path }
-        format.turbo_stream
+        format.html { redirect_to tasks_path, notice: "Task was successfully updated" }
+        format.turbo_stream { flash.now[:notice] = 'Task was successfully updated.' }
       end
     else
-      render :index
+      respond_to do |format|
+        format.html { render :index }
+        format.turbo_stream { render turbo_stream: turbo_stream.replace("#{dom_id(@task)}_form", partial: 'tasks/form', locals: { task: @task }) }
+      end
     end
-  end
-
-  def destroy
-    @task.destroy
-    redirect_to tasks_url, notice: "Post was successfully deleted."
   end
 
   private

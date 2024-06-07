@@ -1,6 +1,19 @@
-<%= form_with(model: task,local: false, class: "mb-7") do |form| %>
-  <div class="mb-5">
-    <%= form.text_field :title, placeholder: "Add new task", class: "inline-block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-96" %>
-    <%= form.submit "Save", class: "btn py-2 ml-2 bg-blue-600 text-white" %>
-  </div>
+<%= turbo_frame_tag 'task_form' do %>
+  <%= form_with(model: task, class: "mb-7") do |form| %>
+    <% if task.errors.any? %>
+      <div id="error_explanation" class="mb-5 text-red-600">
+        <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+        <ul>
+          <% task.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="mb-5">
+      <%= form.text_field :title, placeholder: "Add new task", class: "inline-block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-96" %>
+      <%= form.submit "Save", class: "btn py-2 ml-2 bg-blue-600 text-white" %>
+    </div>
+  <% end %>
 <% end %>
